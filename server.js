@@ -14,10 +14,10 @@ app.get('/', (req, res) => {
 
 // Conexão com banco
 const db = await mysql.createPool({
-  host: 'localhost',
-  user: 'root',
-  password: 'root',
-  database: 'small',
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.DB_NAME,
   waitForConnections: true,
   connectionLimit: 10
 });
@@ -127,3 +127,4 @@ app.get('/ranks', async (req, res) => {
 
 // Rodar servidor
 app.listen(3000, () => console.log('API rodando na porta 3000'));
+
